@@ -1,0 +1,31 @@
+X : 0.057
+Y : 0.012
+Z : 4.229
+
+Rotation : 70,-270,0
+
+
+FNA_Adapter
+Pos : 0.17f,-0.143f,4.129f
+Rot : 180,0,-140
+
+Syringe inside adapter
+Pos : 0.098,-0.1706,4.0984
+
+Syringe at zoom 
+Pos : 0.098f,-0.1706f,4.04f
+Rot : 0,0,45
+
+Disinfectant sachet on Tray
+
+
+Camera at needle
+pos : 0.055,0.023,4.03
+Rot : 70,90,0
+
+General Feedback: concerns all 3 simulations = FNA, thyroid and lymph node
+
+Let user click on the lesion before swab appears to swab area concerned - Done
+Let user click lesion before palpation starts - Done
+Let user click on syringe and adapter assembly before multiple passes start - Done
+Let the multiple passes movements be done faster. Let’s try 3x faster and see - Done

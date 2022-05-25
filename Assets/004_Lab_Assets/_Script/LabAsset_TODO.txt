@@ -1,0 +1,23 @@
+Volumetric Flask
+
+
+1.At the start all equipment will be displayed on the table.
+2. Once user clicks on any, hand picks it up while text and speach go one at same time. After speach
+is finished, probably after 2 seconds, hand places it back where it was. Then there will be a color change of
+the item just to indicate user has already seen it.
+
+
+Camera max zoom 1
+min zoom 0
+
+lab object zoom position  0,0.15,1.5
+
+-90,0,0 - f
+0,0,0 - u
+90,0,0 - f
+0,0,180 -
+0,180,0 -l
+
+z change : f
+x change : l
+y change ; u  
