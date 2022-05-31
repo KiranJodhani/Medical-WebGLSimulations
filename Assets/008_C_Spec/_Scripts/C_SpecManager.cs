@@ -254,6 +254,7 @@ public class C_SpecManager : MonoBehaviour
     public GameObject Posterior_Thumbnail_BehindDish;
     public GameObject Posterior_Thumbnail_InDish;
 
+    public GameObject Posterior_RightHand;
 
 
 
@@ -929,6 +930,7 @@ public class C_SpecManager : MonoBehaviour
         Invoke("Show_ScrewingHand_Arrow", ArrowDelay);
     }
 
+    Sequence ScrewingHandObj_s;
     void ScrewTheDevice()
     {
         ScrewingHand_Arrow.SetActive(false);
@@ -938,15 +940,15 @@ public class C_SpecManager : MonoBehaviour
         s1.Append(Flap_Top.transform.DOLocalRotate(new Vector3(-20, 0, 0), 3f)).SetEase(Ease.Linear).OnComplete(ShowStep15);
 
 
-        Sequence s = DOTween.Sequence();
-        s.Append(ScrewingHandObj.transform.DOLocalRotate(new Vector3(40,0,0),3f).SetEase(Ease.Linear));
-        s.SetLoops(-1);
+        ScrewingHandObj_s = DOTween.Sequence();
+        ScrewingHandObj_s.Append(ScrewingHandObj.transform.DOLocalRotate(new Vector3(40, 0, 0), 3f).SetEase(Ease.Linear));
+        ScrewingHandObj_s.SetLoops(-1);
 
         Sequence s2 = DOTween.Sequence();
         s2.Append(Flap_Top_Device.transform.DOLocalRotate(new Vector3(10, 0, 0), 3f)).SetEase(Ease.Linear);
 
-
     }
+
 
     void ShowStep15() //Step-15
     {
@@ -972,10 +974,17 @@ public class C_SpecManager : MonoBehaviour
         SpeculumInsertion_Thumbnail.SetActive(true);
 
         Sequence s2 = DOTween.Sequence();
-        s2.Append(Flap_Bottom.transform.DOLocalRotate(new Vector3(-10, 0, 0), 3f)).SetEase(Ease.Linear).OnComplete(ShowStep17);
-
+        s2.Append(Flap_Bottom.transform.DOLocalRotate(new Vector3(-10, 0, 0), 3f)).SetEase(Ease.Linear);
+        Invoke("DisableScrewingHandObj_s",3);
         Sequence s3 = DOTween.Sequence();
         s3.Append(Flap_Bottom_Device.transform.DOLocalRotate(new Vector3(-10, 0, 0), 3f)).SetEase(Ease.Linear);
+
+        Invoke("ShowStep17", C_Spec_AudioSource.clip.length + 1);
+    }
+
+    void DisableScrewingHandObj_s()
+    {
+        ScrewingHandObj_s.Kill();
     }
 
     void ShowStep17() //Step-17
@@ -1472,6 +1481,7 @@ public class C_SpecManager : MonoBehaviour
 
     void DropDeviceIntoDish()
     {
+        Posterior_RightHand.SetActive(false);
         Sequence s1 = DOTween.Sequence();
         s1.Append(Posterior_Thumbnail.transform.DOLocalMove(Posterior_Thumbnail_InDish.transform.localPosition,
             2f)).SetEase(Ease.Linear).OnComplete(ShowStep26);
@@ -1839,9 +1849,9 @@ public class C_SpecManager : MonoBehaviour
     public void GoToNextPage()
     {
         CurrentPage = CurrentPage + 1;
-        if (CurrentPage > 2)
+        if (CurrentPage > Pages_English.Length-1)
         {
-            CurrentPage = 2;
+            CurrentPage = Pages_English.Length - 1;
         }
         HideAllPages();
         if (Simulation_Backend.SelectedLanguageID == 0)

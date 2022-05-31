@@ -23,10 +23,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/006_LymphNode/_Scene/LymphNode.unity
     guid: cd0cb52bfa0bd4b50b2b04f59a224278
-  - enabled: 0
+  - enabled: 1
     path: Assets/007_Thyroid/_Scene/Thyroid.unity
     guid: 899363cc8e66a44378412ceaca688ab6
-  - enabled: 1
+  - enabled: 0
     path: Assets/008_C_Spec/_Scene/C_Spec.unity
     guid: d860f9d929c1f4cf0a436ee3870a6d68
   m_configObjects: {}
